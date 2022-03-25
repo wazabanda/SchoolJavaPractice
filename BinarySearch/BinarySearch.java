@@ -18,7 +18,7 @@ public class BinarySearch
 		binarySearch(arrayToSearch,intToSearch);
 	}
 
-	public static void binarySearch(int[] arrayToSearch,int intToSearch)
+	public static int binarySearch(int[] arrayToSearch,int intToSearch)
 	{
 		int startIndex = 0;
 		int endIndex = 0;
@@ -29,12 +29,24 @@ public class BinarySearch
 		while(true)
 		{
 
-			System.out.println("EndIndex: " + endIndex + "\nStartIndex: "+ startIndex);
+			//System.out.println("EndIndex: " + endIndex + "\nStartIndex: "+ startIndex);
  			count += 1;
 			if(count >= arrayToSearch.length){break;}	
-			if(arrayToSearch[endIndex] == intToSearch){printIndex(endIndex,count);break;}
-			if(arrayToSearch[startIndex] == intToSearch){printIndex(startIndex,count);break;}			
-			if(arrayToSearch[previousEndIndex] == intToSearch){printIndex(previousEndIndex,count);break;}
+			if(arrayToSearch[endIndex] == intToSearch)
+			{
+				printIndex(endIndex,count);
+				return endIndex;
+			}
+			if(arrayToSearch[startIndex] == intToSearch)
+			{
+				printIndex(startIndex,count);
+				return startIndex;
+			}			
+			if(arrayToSearch[previousEndIndex] == intToSearch)
+			{
+				printIndex(previousEndIndex,count);
+				return previousEndIndex;
+			}
 		
 			if(arrayToSearch[endIndex] < intToSearch)
 			{
