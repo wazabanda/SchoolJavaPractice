@@ -62,9 +62,9 @@ public class BinarySearch
 				endIndex = endIndex % 2 == 0 ? (endIndex / 2) : (endIndex - 1)/2; 
 				continue;
 			}
-			
+		
 		}
-
+		return 0;
 	}
 	public static void printIndex(int index, int count)
 	{
