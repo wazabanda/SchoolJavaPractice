@@ -7,14 +7,17 @@ public class BinarySearch
 	public static void main(String[] args)
 	{
 		
-		int[] arrayToSearch = {1,2,3,4,5,6,7,8,9,10,20,22,30,29,40,50,11,17};
+		//int[] arrayToSearch = {1,2,3,4,5,6,7,8,9,10,20,22,30,29,40,50,11,17};
+		int[] arrayToSearch = {'a','c','b','f','j','k','y','t'};
+
 		Arrays.sort(arrayToSearch);
 		System.out.println(Arrays.toString(arrayToSearch));
 		
 		Scanner input = new Scanner(System.in);
 
-		int intToSearch = input.nextInt();
-		
+	//	int intToSearch = input.nextInt();
+	
+		int intToSearch = input.next().charAt(0);
 		binarySearch(arrayToSearch,intToSearch);
 	}
 
