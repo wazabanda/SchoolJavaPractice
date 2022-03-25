@@ -14,7 +14,12 @@ public class BinarySearch
 		Scanner input = new Scanner(System.in);
 
 		int intToSearch = input.nextInt();
+		
+		binarySearch(arrayToSearch,intToSearch);
+	}
 
+	public static void binarySearch(int[] arrayToSearch,int intToSearch)
+	{
 		int startIndex = 0;
 		int endIndex = 0;
 		int previousEndIndex = 0;
@@ -47,8 +52,8 @@ public class BinarySearch
 			}
 			
 		}
-	}
 
+	}
 	public static void printIndex(int index, int count)
 	{
 		System.out.println("Found Index: " + Integer.toString(index));
