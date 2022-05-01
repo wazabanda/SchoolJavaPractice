@@ -1,3 +1,6 @@
+//RSA encrypthon by waza banda
+//Took me 5+ hours thanks to debuging 😣
+// 01/05/22
 import java.util.*;
 import java.math.*;
 public class Rsa
@@ -32,9 +35,10 @@ public class Rsa
 		clearScreen();
 		System.out.println("Waza_Crypt Menu");
 	
-		System.out.printf("%s %s %s %s",
+		System.out.printf("%s %s %s %s %s",
 				"Enter the following commands \n",
 				"=> Q to quit \n",
+				"=> G to generate a public key\n",
 				"=> E to encrypt a message \n",
 				"=> D to decrypt a message \n"
 				);
@@ -50,14 +54,23 @@ public class Rsa
 				return;
 			
 			case "e":
-				System.out.print("Please enter any two prime numbers => ");
-				int p = INPUT.nextInt();
-				int q = INPUT.nextInt();
+				System.out.print("Please enter the public key i.e e and n => ");
+				int e = INPUT.nextInt();
+				int n = INPUT.nextInt();
 				System.out.println("Please enter the message you wish to encrypt =>");
 				INPUT.nextLine();
 				String message = INPUT.nextLine();
-				String msg = encryptMessage(message,p,q);
+				String msg = encryptMessage(message,e,n);
 				System.out.printf("You top Seceret message is \n ----- \n %s \n -----\n => Enter to continue....",msg);
+				INPUT.nextLine();
+				INPUT.nextLine();
+				break;
+			case "g":
+				System.out.print("Please enter any two prime numbers => ");
+				int p = INPUT.nextInt();
+				int q = INPUT.nextInt();
+				genPublicKey(q,p);
+				System.out.println("\nPublic Key Generated..Press Enter to continue....\n ");
 				INPUT.nextLine();
 				INPUT.nextLine();
 				break;
@@ -90,13 +103,26 @@ public class Rsa
 		System.out.println("\033[H\033[2J");
 		System.out.flush();
        	}
+
+	//Generates public key
+	public static void genPublicKey(int p ,int q)
+	{
+		int n = q * p;
+		int tn = (p-1)* (q - 1);
+		int e = getCoprime(tn);
+		System.out.println("\nBip Bop doing some computer magic beep bop :) \n");
+		System.out.println("-------");
+		System.out.printf("Your public key i.e (e , n) is (%d , %d)\n",e,n);
+		System.out.println("-------");
+	
+	}
 	//Encrypts the message with RSA	
-	public static String encryptMessage(String message , int p , int q)
+	public static String encryptMessage(String message , int e , int n)
 	{	
 		message = message.toUpperCase();
-		int n = p * q;
-		int tn = (p-1) * (q - 1);
-		int e = 0;
+		//int n = p * q;
+		//int tn = (p-1) * (q - 1);
+		//int e = 0;
 		/*for(int i = 2; i < tn;i++)
 		{
 			if(getGcd(i,tn) == 1)
@@ -105,12 +131,14 @@ public class Rsa
 				break;
 			}
 		}*/
+		/*
 		e = getCoprime(tn);
 		System.out.println("\nBip Bop doing some computer magic beep bop :) \n");
 		System.out.println("-------");
 		System.out.printf("Your public key i.e (e , n) is (%d , %d)\n",e,n);
 		System.out.println("-------");
 		System.out.println("\nStarting to generate your top secret message boop beep \n");
+		*/
 		String encryptedMsg = "";
 		int length = message.length();
 		for(int i = 0; i < length;i++)
